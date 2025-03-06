@@ -5,6 +5,9 @@ let campoRecebeNome = "";
 let nomeAtual = "";
 let numeroDeAmigosAdicionados = 0 ;
 
+
+
+
 exibirMensagemInicial();
 //Função que automatiza a exibição de textos nos elementos do html.
 function exibirTextoNaTela(tag,texto) {
@@ -23,9 +26,13 @@ function exibirTextoNaTela(tag,texto) {
 //o nome dos amigos e adicionado ao vetor listaDeNomeDOsAmigos
 
 function adicionarAmigo(){
-    nomeAtual = document.querySelector("input").value;
-    campoRecebeNome = nomeAtual;
+  nomeAtual = document.querySelector("input").value;
+    if (nomeAtual == ""){
+    alert("Por favor, insira um nome!");
+  } else{
+     campoRecebeNome = nomeAtual;
     numeroDeAmigosAdicionados++;
+  }
     
     if (numeroDeAmigosAdicionados == numeroLimiteDeNomes + 1){
         exibirTextoNaTela("h2","Você já adicionou o número máximo de amigos!");
@@ -41,9 +48,24 @@ function adicionarAmigo(){
         exibirTextoNaTela("h2", "");
         listaDeNomesDosAmigos.push(campoRecebeNome);
         limpaCampo();
+        atualizaListaDeAmigos();
        }
 
     }
+}
+
+// Percorrer o array e adicionar elementos à lista
+function atualizaListaDeAmigos (){
+  
+listaAmigos.innerHTML = ""; 
+
+for (let i = 0; i < listaDeNomesDosAmigos.length; i++) {
+  const item = document.createElement('li');
+  item.textContent = listaDeNomesDosAmigos[i];
+  item.id = `amigo-${i}`;      // ID único pra cada amigo
+  item.className = 'amigo';    // Mesma classe pra todos
+  listaAmigos.appendChild(item);
+}
 }
 //Função que desabilita o botão adicionar e o botão sortear.
 
@@ -59,7 +81,7 @@ function adicionarAmigo(){
  // secreto é sorteado e exibido na tela.
 
  function sortearAmigo(){
-  if (numeroDeAmigosAdicionados == 1){
+  if (numeroDeAmigosAdicionados == 1 || numeroDeAmigosAdicionados == 0){
     exibirTextoNaTela("h2","Você precisa adicionar pelo menos 2 amigos para o sorteio!");
   
   } else {
