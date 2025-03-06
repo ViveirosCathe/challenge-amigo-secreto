@@ -24,6 +24,7 @@ Este é um projeto desenvolvido em JavaScript para realizar um sorteio de amigo 
 5. O nome do amigo secreto sorteado será exibido na tela.
 
 ## Vídeo Demonstrativo
+[ https://viveiroscathe.github.io/challenge-amigo-secreto/]
 
 https://github.com/user-attachments/assets/fd13571f-6b04-43c9-96bc-f25821e1ab3b
 
